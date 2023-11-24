@@ -30,10 +30,10 @@ public class Homework {
     private static final int LIST_INT_RANDOM_NUMBER_FROM = 1;
     private static final int LIST_INT_RANDOM_NUMBER_TO = 1_000_001;
     private static final int LIST_INT_LIMIT = 1_000;
-    private static final int LIST_INT_MORE_THEN = 500_000;
+    private static final int LIST_INT_MORE_THAN = 500_000;
     private static final int LIST_INT_MULTIPLY_BY = 5;
     private static final int LIST_INT_SUBTRACT = 150;
-    private static final int LIST_INT_SQUARE_MORE_THEN = 100_000;
+    private static final int LIST_INT_SQUARE_IS_LESS_THAN = 100_000;
     //endregion
 
     //region Поля константы для списка работников
@@ -51,7 +51,7 @@ public class Homework {
         List<Integer> list = createListRandomNumber();
         findMaxNumber(list);
         findAllNumbersGreaterThan500_000AndMultiplyBy5AndSubtract150AndSum(list);
-        findCountNumberSquareWhichMoreThen100_000(list);
+        findCountNumberSquareWhichIsLessThan100_000(list);
         System.out.println();
 
         System.out.println("======= 2 =======");
@@ -89,7 +89,7 @@ public class Homework {
     private static void findAllNumbersGreaterThan500_000AndMultiplyBy5AndSubtract150AndSum(List<Integer> integerList) {
         integerList
                 .stream()
-                .filter(it -> it > LIST_INT_MORE_THEN)
+                .filter(it -> it > LIST_INT_MORE_THAN)
                 .map(it -> it * LIST_INT_MULTIPLY_BY)
                 .map(it -> it - LIST_INT_SUBTRACT)
                 .reduce(Integer::sum)
@@ -100,12 +100,12 @@ public class Homework {
     /**
      * 1.3 Найти количество чисел, квадрат которых меньше, чем 100_000.
      */
-    private static void findCountNumberSquareWhichMoreThen100_000(List<Integer> integerList) {
+    private static void findCountNumberSquareWhichIsLessThan100_000(List<Integer> integerList) {
         long count = integerList
                 .stream()
-                .filter(it -> it * it > LIST_INT_SQUARE_MORE_THEN)
+                .filter(it -> it * it < LIST_INT_SQUARE_IS_LESS_THAN)
                 .count();
-        System.out.println("Количество чисел в списке, квадрат которых > 100_000: " + count);
+        System.out.println("Количество чисел в списке, квадрат которых < 100_000: " + count);
     }
 
     /**
